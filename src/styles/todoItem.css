@@ -1,0 +1,131 @@
+.todoItem {
+    display: flex;
+    background: #fff;
+    margin: 20px 0;
+    box-shadow: 0px 0px 5px #11111144;
+    animation: animateItem 500ms ease-in-out;
+}
+
+@keyframes animateItem {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todoItem__check {
+    position: relative;
+    background: #eee;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+}
+
+.todoItem.done .todoItem__check {
+    background: #05b86d;
+}
+
+.todoItem__check::before, .todoItem__check::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%) rotate(0deg);
+    background: #33333333;
+    transition: transform 200ms ease-in-out;
+}
+
+.todoItem.done .todoItem__check::before {
+    background: #333;
+    width: 30%;
+    left: 25%;
+    transform: rotate(45deg) translateY(5px);
+    transform-origin: right;
+}
+
+.todoItem.done .todoItem__check::after {
+    background: #333;
+    width: 50%;
+    left: 35%;
+    transform: rotate(-45deg) translateY(5px);
+    transform-origin: left;
+}
+
+.todoItem__title {
+    flex: 1;
+    font-size: 1rem;
+    padding: 10px;
+    padding-left: 20px;
+    color: #121212;
+    position: relative;
+    transition: color 400ms ease-in-out;
+}
+
+.todoItem__title::first-letter {
+    text-transform: uppercase;
+}
+
+.todoItem.done .todoItem__title {
+    color: #12121233;
+    position: relative;
+}
+
+.todoItem__title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: calc(100% - 30px);
+    height: 1px;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: left;
+    background: #00000044;
+    transition: all 400ms ease-in-out;
+    transition-property: transform, opacity;
+}
+
+.todoItem.done .todoItem__title::before {
+    transform: translateY(-50%) scaleX(1);
+}
+
+.todoItem__delete {
+    position: relative;
+    background: #f03c3c;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+}
+
+.todoItem__delete:hover {
+    background: #000;
+}
+
+.todoItem__delete:hover::before {
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.todoItem__delete:hover::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.todoItem__delete::before, .todoItem__delete::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 3px;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%) rotate(45deg);
+    background: #fff;
+    transition: transform 200ms ease-in-out;
+}
+
+.todoItem__delete::after {
+    transform: translateY(-50%) rotate(-45deg);
+}
